@@ -80,6 +80,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@mapbox/sexagesimal": "^1.2.0",
+    "@mapeo/core": "github:digidem/mapeo-core#ws-sync",
     "@mapeo/settings": "^2.1.1",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.5.1",

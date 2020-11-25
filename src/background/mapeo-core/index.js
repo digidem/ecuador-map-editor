@@ -157,6 +157,10 @@ handlers['sync-start'] = async (target) => {
   manager.mapeo.syncStart(target)
 }
 
+handlers['sync-connect'] = async (url) => {
+  manager.mapeo.syncConnect(url)
+}
+
 handlers['sync-join'] = async () => {
   manager.mapeo.syncJoin()
 }

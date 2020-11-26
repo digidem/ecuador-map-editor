@@ -134,6 +134,7 @@ class MapeoRPC {
     try {
       logger.debug(
         'Connecting to MapeoWeb',
+        url,
         this.encryptionKey && this.encryptionKey.slice(0, 4)
       )
       this.core.sync.connectWebsocket(url, this.encryptionKey)

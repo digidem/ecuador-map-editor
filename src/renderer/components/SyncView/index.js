@@ -40,7 +40,7 @@ const fileDialogFilters = [
 const SyncView = ({ focusState }) => {
   const cx = useStyles()
   const listenForSyncPeers = focusState === 'focused'
-  const [peers, syncPeer] = usePeers(listenForSyncPeers)
+  const [peers, syncPeer, connectMapeoWeb] = usePeers(listenForSyncPeers)
   const { formatMessage: t } = useIntl()
   logger.debug('render peers', peers)
 
@@ -70,11 +70,18 @@ const SyncView = ({ focusState }) => {
     }).catch(err => logger.error(err))
   }
 
+  const handleClickConnectMapeoWeb = () => {
+		console.log('Connect to mapeo web!')
+		connectMapeoWeb('wss://cloud.mapeo.app')
+		// connectMapeoWeb('ws://localhost:42069')
+  }
+
   return (
     <div className={cx.root}>
       <SyncAppBar
         onClickSelectSyncfile={handleClickSelectSyncfile}
         onClickNewSyncfile={handleClickNewSyncfile}
+        onClickConnectMapeoWeb={handleClickConnectMapeoWeb}
       />
       {peers.length === 0 && focusState === 'focused' ? (
         <Searching />
@@ -201,7 +208,12 @@ function usePeers (listen) {
     [serverPeers]
   )
 
-  return [peers, syncPeer]
+  const connectMapeoWeb = useCallback((url) => {
+		logger.info('Request connect mapeo web start', url)
+		api.syncConnect(url)
+  }, [serverPeers])
+
+  return [peers, syncPeer, connectMapeoWeb]
 }
 
 /**

@@ -40,7 +40,7 @@ const fileDialogFilters = [
 const SyncView = ({ focusState }) => {
   const cx = useStyles()
   const listenForSyncPeers = focusState === 'focused'
-  const [peers, syncPeer, connectMapeoWeb] = usePeers(listenForSyncPeers)
+  const [peers, syncPeer, canConnectMapeoWeb, connectMapeoWeb] = usePeers(listenForSyncPeers)
   const { formatMessage: t } = useIntl()
   logger.debug('render peers', peers)
 
@@ -71,14 +71,13 @@ const SyncView = ({ focusState }) => {
   }
 
   const handleClickConnectMapeoWeb = () => {
-		console.log('Connect to mapeo web!')
-		connectMapeoWeb('wss://cloud.mapeo.app')
-		// connectMapeoWeb('ws://localhost:42069')
+    connectMapeoWeb()
   }
 
   return (
     <div className={cx.root}>
       <SyncAppBar
+        canConnectMapeoWeb={canConnectMapeoWeb}
         onClickSelectSyncfile={handleClickSelectSyncfile}
         onClickNewSyncfile={handleClickNewSyncfile}
         onClickConnectMapeoWeb={handleClickConnectMapeoWeb}
@@ -109,6 +108,15 @@ function usePeers (listen) {
   const [serverPeers, setServerPeers] = useState([])
   const [syncErrors, setSyncErrors] = useState(new Map())
   const [syncRequests, setSyncRequests] = useState(new Map())
+
+  // Will be `null` if you cannot connect, else it'll be the sync server URL in the config
+  const [canConnectMapeoWeb, setCanConnectMapeoWeb] = useState(null)
+
+  useEffect(() => {
+    api.getMetadata().then(({syncServer}) => {
+      setCanConnectMapeoWeb(syncServer || null)
+    }).catch(() => setCanConnectMapeoWeb(null))
+  }, [])
 
   // Keep a ref of the last time this view was closed (used to maintain peer
   // "completed" state in the UI)
@@ -208,12 +216,21 @@ function usePeers (listen) {
     [serverPeers]
   )
 
-  const connectMapeoWeb = useCallback((url) => {
-		logger.info('Request connect mapeo web start', url)
-		api.syncConnect(url)
-  }, [serverPeers])
+  const connectMapeoWeb = useCallback((gotURL) => {
+    async function doConnectMapeoWeb() {
+      let url = gotURL
+      if(!url) {
+        const metadata = await api.getMetadata()
+        const {syncServer} = metadata
+        url = syncServer
+        logger.info('Request connect mapeo web start', {metadata, url})
+      }
+      api.syncConnect(url)
+    }
+    doConnectMapeoWeb()
+  }, [])
 
-  return [peers, syncPeer, connectMapeoWeb]
+  return [peers, syncPeer, canConnectMapeoWeb, connectMapeoWeb]
 }
 
 /**

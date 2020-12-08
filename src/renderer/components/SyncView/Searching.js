@@ -13,11 +13,12 @@ const m = defineMessages({
     'Make sure devices are turned on and connected to the same wifi network'
 })
 
-const Searching = () => {
+const Searching = ({children}) => {
   const cx = useStyles()
   const { formatMessage: t } = useIntl()
   return (
     <div className={cx.searchingWrapper}>
+      {children}
       <div className={cx.searching}>
         <Loader />
         <div className={cx.searchingText}>

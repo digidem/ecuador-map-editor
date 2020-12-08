@@ -51,10 +51,9 @@ const m = defineMessages({
   // Button to sync from an existing sync file
   selectSyncfile: 'Sync from a file…',
   // Button to create a new sync file
-  newSyncfile: 'Create new syncfile…',
-  connectMapeoWeb: 'Connect to Mapeo Web'
+  newSyncfile: 'Create new syncfile…'
 })
-const SyncAppBar = ({ onClickSelectSyncfile, onClickNewSyncfile, onClickConnectMapeoWeb, canConnectMapeoWeb }) => {
+const SyncAppBar = ({ onClickSelectSyncfile, onClickNewSyncfile }) => {
   const cx = useStyles()
   const { formatMessage: t } = useIntl()
   const [currentConnection, setCurrentConnection] = useState(null)
@@ -148,16 +147,6 @@ const SyncAppBar = ({ onClickSelectSyncfile, onClickNewSyncfile, onClickConnectM
           className={cx.button}>
           {t(m.newSyncfile)}
         </Button>
-        { canConnectMapeoWeb ? (
-          <Button
-            onClick={onClickConnectMapeoWeb}
-            color="inherit"
-            variant="outlined"
-            className={cx.button}
-          >
-            {t(m.connectMapeoWeb)}
-          </Button>
-        ) : null }
       </Toolbar>
     </AppBar>
   )

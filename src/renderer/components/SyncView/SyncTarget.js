@@ -4,6 +4,7 @@ import PhoneIcon from '@material-ui/icons/PhoneAndroid'
 import LaptopIcon from '@material-ui/icons/Laptop'
 import FileIcon from '@material-ui/icons/Usb'
 import ErrorIcon from '@material-ui/icons/Error'
+import CloudIcon from '@material-ui/icons/CloudUpload'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import SyncButton from './SyncButton'
@@ -57,6 +58,8 @@ const SyncTarget = ({
             <LaptopIcon fontSize='inherit' className={cx.icon} />
           ) : deviceType === 'file' ? (
             <FileIcon fontSize='inherit' className={cx.icon} />
+          ) : deviceType === 'cloud' ? (
+            <CloudIcon fontSize='inherit' className={cx.icon} />
           ) : (
             <PhoneIcon fontSize='inherit' className={cx.icon} />
           )}

@@ -48,16 +48,16 @@ const EditDialogContent = ({
   const classes = useStyles()
   const { formatMessage } = useIntl()
   const [saving, setSaving] = useState()
-  const [title, setTitle] = useState()
-  const [description, setDescription] = useState()
-  // const [terms, setTerms] = useState()
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  // const [terms, setTerms] = useState('')
   // const [mapStyle, setMapStyle] = useState(defaultMapStyle)
 
   const handleClose = () => {
     setSaving(false)
-    setTitle(undefined)
-    setDescription(undefined)
-    // setTerms(undefined)
+    setTitle('')
+    setDescription('')
+    // setTerms('')
     // setMapStyle(defaultMapStyle)
     onClose()
   }

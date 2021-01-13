@@ -183,8 +183,8 @@ function Api ({ baseUrl, mapUrl, ipc }) {
     },
 
     // Connect to a MapeoWeb server
-    syncConnect: function syncConnect (url) {
-      ipc.send('sync-connect', url)
+    connectCloud: function syncConnect (url) {
+      ipc.send('sync-connect-cloud', url)
     },
 
     exportData: function (filename, { format = 'geojson' } = {}) {

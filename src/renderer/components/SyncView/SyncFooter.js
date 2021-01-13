@@ -1,27 +1,15 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
-import api from '../../new-api'
+import {useConfig} from '../../hooks/useConfig'
 
 const visibleKeyLength = 5
 
 const SyncFooter = () => {
   const cx = useStyles()
-  const [encryptionKey, setEncryptionKey] = useState(null)
-  const [metadata, setMetadata] = useState(null)
-
-  // Check encryption key on load
-  useEffect(() => {
-    const check = async () => {
-      const encryptionKey = await api.getEncryptionKey()
-      setEncryptionKey(encryptionKey)
-      const metadata = await api.getMetadata()
-      setMetadata(metadata)
-    }
-    check()
-  }, [])
+  const {metadata, encryptionKey} = useConfig()
 
   return (
     <AppBar position='static' color='default' elevation={0} className={cx.root}>

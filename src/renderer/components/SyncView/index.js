@@ -6,6 +6,7 @@ import path from 'path'
 
 import logger from '../../../logger'
 import api from '../../new-api'
+import {useConfig} from '../../hooks/useConfig'
 import Searching from './Searching'
 import SyncAppBar from './SyncAppBar'
 import SyncTarget from './SyncTarget'
@@ -39,8 +40,12 @@ const fileDialogFilters = [
 
 const SyncView = ({ focusState }) => {
   const cx = useStyles()
+  const {
+      metadata: { syncServer }
+  } = useConfig()
   const listenForSyncPeers = focusState === 'focused'
-  const [peers, syncPeer, canConnectMapeoWeb, connectMapeoWeb] = usePeers(listenForSyncPeers)
+  const [peers, syncPeer, connectCloud] = usePeers(listenForSyncPeers)
+  const canConnectCloud = !!syncServer
   const { formatMessage: t } = useIntl()
   logger.debug('render peers', peers)
 
@@ -70,8 +75,8 @@ const SyncView = ({ focusState }) => {
     }).catch(err => logger.error(err))
   }
 
-  const handleClickConnectMapeoWeb = () => {
-    connectMapeoWeb()
+  const handleClickConnectCloud = () => {
+    connectCloud(syncServer)
   }
 
 	const hasCloudPeer = peers.find(({deviceType}) => deviceType === 'cloud')
@@ -87,16 +92,16 @@ const SyncView = ({ focusState }) => {
         key={hasCloudPeer.id}
         {...hasCloudPeer}
         connected={true}
-        onClick={handleClickConnectMapeoWeb}
+        onClick={handleClickConnectCloud}
       />
     )
-  ) : canConnectMapeoWeb ? (
+  ) : canConnectCloud ? (
     <SyncTarget
       name="Mapeo Cloud Sync"
       deviceType="cloud"
       status={'ready'}
       connected
-      onClick={handleClickConnectMapeoWeb}
+      onClick={handleClickConnectCloud}
     />
   ) : null
 
@@ -140,15 +145,6 @@ function usePeers (listen) {
   const [serverPeers, setServerPeers] = useState([])
   const [syncErrors, setSyncErrors] = useState(new Map())
   const [syncRequests, setSyncRequests] = useState(new Map())
-
-  // Will be `null` if you cannot connect, else it'll be the sync server URL in the config
-  const [canConnectMapeoWeb, setCanConnectMapeoWeb] = useState(null)
-
-  useEffect(() => {
-    api.getMetadata().then(({syncServer}) => {
-      setCanConnectMapeoWeb(syncServer || null)
-    }).catch(() => setCanConnectMapeoWeb(null))
-  }, [])
 
   // Keep a ref of the last time this view was closed (used to maintain peer
   // "completed" state in the UI)
@@ -248,21 +244,11 @@ function usePeers (listen) {
     [serverPeers]
   )
 
-  const connectMapeoWeb = useCallback((gotURL) => {
-    async function doConnectMapeoWeb() {
-      let url = gotURL
-      if(!url) {
-        const metadata = await api.getMetadata()
-        const {syncServer} = metadata
-        url = syncServer
-        logger.info('Request connect mapeo web start', {metadata, url})
-      }
-      api.syncConnect(url)
-    }
-    doConnectMapeoWeb()
+  const connectCloud = useCallback((url) => {
+    api.connectCloud(url)
   }, [])
 
-  return [peers, syncPeer, canConnectMapeoWeb, connectMapeoWeb]
+  return [peers, syncPeer, connectCloud]
 }
 
 /**

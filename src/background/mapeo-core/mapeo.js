@@ -130,6 +130,19 @@ class MapeoRPC {
     })
   }
 
+  connectCloud(url) {
+    try {
+      logger.debug(
+        'Connecting to MapeoWeb',
+        url,
+        this.encryptionKey && this.encryptionKey.slice(0, 4)
+      )
+      this.core.sync.connectWebsocket(url, this.encryptionKey)
+    } catch (e) {
+      this._handleError('connectCloud', e)
+    }
+  }
+
   syncStart (target = {}) {
     logger.info('Sync start request:', target)
 

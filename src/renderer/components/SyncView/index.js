@@ -6,6 +6,7 @@ import path from 'path'
 
 import logger from '../../../logger'
 import api from '../../new-api'
+import {useConfig} from '../../hooks/useConfig'
 import Searching from './Searching'
 import SyncAppBar from './SyncAppBar'
 import SyncTarget from './SyncTarget'
@@ -39,8 +40,12 @@ const fileDialogFilters = [
 
 const SyncView = ({ focusState }) => {
   const cx = useStyles()
+  const {
+      metadata: { syncServer }
+  } = useConfig()
   const listenForSyncPeers = focusState === 'focused'
-  const [peers, syncPeer] = usePeers(listenForSyncPeers)
+  const [peers, syncPeer, connectCloud] = usePeers(listenForSyncPeers)
+  const canConnectCloud = !!syncServer
   const { formatMessage: t } = useIntl()
   logger.debug('render peers', peers)
 
@@ -70,6 +75,36 @@ const SyncView = ({ focusState }) => {
     }).catch(err => logger.error(err))
   }
 
+  const handleClickConnectCloud = () => {
+    connectCloud(syncServer)
+  }
+
+	const hasCloudPeer = peers.find(({deviceType}) => deviceType === 'cloud')
+  const mapeoWebSyncButton = hasCloudPeer ? (
+    (hasCloudPeer.status !== 'complete') ? (
+      <SyncTarget
+        key={hasCloudPeer.id}
+        {...hasCloudPeer}
+        onClick={() => syncPeer(hasCloudPeer.id)}
+      />
+    ) : (
+      <SyncTarget
+        key={hasCloudPeer.id}
+        {...hasCloudPeer}
+        connected={true}
+        onClick={handleClickConnectCloud}
+      />
+    )
+  ) : canConnectCloud ? (
+    <SyncTarget
+      name="Mapeo Cloud Sync"
+      deviceType="cloud"
+      status={'ready'}
+      connected
+      onClick={handleClickConnectCloud}
+    />
+  ) : null
+
   return (
     <div className={cx.root}>
       <SyncAppBar
@@ -77,16 +112,24 @@ const SyncView = ({ focusState }) => {
         onClickNewSyncfile={handleClickNewSyncfile}
       />
       {peers.length === 0 && focusState === 'focused' ? (
-        <Searching />
+        mapeoWebSyncButton ? (
+          <SyncGrid>
+            {mapeoWebSyncButton}
+            <Searching/>
+          </SyncGrid>
+        ) : (
+          <Searching/>
+        )
       ) : (
         <SyncGrid>
-          {peers.map(peer => (
+          {mapeoWebSyncButton}
+          {peers.map(peer => ((peer.deviceType !== 'cloud') && (
             <SyncTarget
               key={peer.id}
               {...peer}
               onClick={() => syncPeer(peer.id)}
             />
-          ))}
+          )))}
         </SyncGrid>
       )}
       <SyncFooter />
@@ -201,7 +244,11 @@ function usePeers (listen) {
     [serverPeers]
   )
 
-  return [peers, syncPeer]
+  const connectCloud = useCallback((url) => {
+    api.connectCloud(url)
+  }, [])
+
+  return [peers, syncPeer, connectCloud]
 }
 
 /**

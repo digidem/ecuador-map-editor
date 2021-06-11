@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import NumberField from './NumberField'
 
 export default {
-  title: 'ObservationDialog/NumberField'
+  title: 'Observation Dialog/NumberField'
   // decorators: [storyFn => <div style={{ padding: '10px 0' }}>{storyFn()}</div>]
 }
 

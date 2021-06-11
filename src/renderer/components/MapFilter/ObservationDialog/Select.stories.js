@@ -62,7 +62,7 @@ const StateContainer = ({
 }
 
 export default {
-  title: 'ObservationDialog/SelectOne'
+  title: 'Observation Dialog/SelectOne'
 }
 
 export const defaultStory = () => (

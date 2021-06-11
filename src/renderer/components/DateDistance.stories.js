@@ -3,7 +3,7 @@ import React from 'react'
 import DateDistance from './DateDistance'
 
 export default {
-  title: 'DateDistance'
+  title: 'internal/DateDistance'
 }
 
 export const oneWeek = () => (

@@ -7,7 +7,7 @@ import DataExportDialog from './DataExportDialog'
 import exampleObservations from '../../../../fixtures/observations.json'
 
 export default {
-  title: 'MapFilter/components/DataExportDialog',
+  title: 'internal/Data Export Dialog',
   decorator: [
     storyFn => <StylesProvider injectFirst>{storyFn()}</StylesProvider>
   ]

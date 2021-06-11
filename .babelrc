@@ -23,7 +23,7 @@
   plugins: [
     // Allows directly declaring props and methods on a class instead of
     // binding them to `this` in the constructor
-    '@babel/plugin-proposal-class-properties',
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
     // Allows simpler defineMessages with react-intl
     // https://github.com/akameco/babel-plugin-react-intl-auto
     ['react-intl-auto', { filebase: true, removePrefix: 'src' }],

@@ -1,3 +1,7 @@
 body {
   overflow: auto;
 }
+
+body.sb-show-main.sb-main-padded {
+  padding: 0;
+}

@@ -5,7 +5,7 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateTimeField from './DateTimeField'
 
 export default {
-  title: 'ObservationDialog/DateTimeField'
+  title: 'Observation Dialog/DateTimeField'
   // decorators: [storyFn => <div style={{ padding: '10px 0' }}>{storyFn()}</div>]
 }
 

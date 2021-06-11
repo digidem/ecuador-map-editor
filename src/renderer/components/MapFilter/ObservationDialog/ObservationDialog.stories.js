@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions'
 import { getFields, createMemoizedStats } from '../lib/data_analysis'
 
 export default {
-  title: 'ObservationDialog',
+  title: 'Observation Dialog',
   component: ObservationDialog
 }
 

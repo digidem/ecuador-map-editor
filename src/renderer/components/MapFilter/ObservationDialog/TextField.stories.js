@@ -3,7 +3,7 @@ import * as React from 'react'
 import TextField from './TextField'
 
 export default {
-  title: 'ObservationDialog/TextField'
+  title: 'Observation Dialog/TextField'
   // decorators: [storyFn => <div style={{ padding: '10px 0' }}>{storyFn()}</div>]
 }
 

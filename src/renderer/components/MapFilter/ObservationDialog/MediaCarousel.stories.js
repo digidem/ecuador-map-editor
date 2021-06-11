@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions'
 import MediaCarousel from './MediaCarousel'
 
 export default {
-  title: 'ObservationDialog/MediaCarousel'
+  title: 'Observation Dialog/MediaCarousel'
 }
 
 export const defaultStory = () => (

@@ -7,13 +7,13 @@ import MapFilterToolbar from './Toolbar'
 import ExportButton from './ExportButton'
 
 export default {
-  title: 'MapFilter/components/Toolbar',
+  title: 'internal/Toolbar',
   decorator: [
     storyFn => <StylesProvider injectFirst>{storyFn()}</StylesProvider>
   ]
 }
 
-export const defaultStory = () => {
+export const Toolbar = () => {
   const [view, setView] = React.useState('map')
   return (
     <MapFilterToolbar
@@ -24,6 +24,6 @@ export const defaultStory = () => {
   )
 }
 
-defaultStory.story = {
-  name: 'default'
-}
+// defaultStory.story = {
+//   name: 'default'
+// }

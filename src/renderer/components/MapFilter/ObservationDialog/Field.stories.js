@@ -6,7 +6,7 @@ import Field from './Field'
 import { action } from '@storybook/addon-actions'
 
 export default {
-  title: 'ObservationDialog/Field'
+  title: 'Observation Dialog/Field'
 }
 
 const fieldTypes = [

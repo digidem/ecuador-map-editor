@@ -112,7 +112,6 @@
     "electron-timber": "^0.5.1",
     "electron-updater": "^4.2.2",
     "flat": "^5.0.0",
-    "flow-geojson": "^2.0.7",
     "fs-cache-middleware": "^1.0.0",
     "fs-extra": "^9.0.1",
     "fs-write-stream-atomic": "^1.0.10",

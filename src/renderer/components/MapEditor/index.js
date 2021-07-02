@@ -355,8 +355,8 @@ const fallbackPresets = {
   }
 }
 
-// iD Editor requires that a "name" field is always defined.
 const fallbackFields = {
+  // iD Editor requires that a "name" field is always defined.
   name: {
     key: 'name',
     type: 'localized',
@@ -394,17 +394,23 @@ function convertPresets (presetsObj) {
   // `categoryId`
   Object.keys(presets).forEach(presetId => {
     const preset = presets[presetId]
+    let tags = preset.tags
+    let fields = preset.fields
     if (
-      Object.keys(preset.tags || {}).length === 0 &&
+      Object.keys(tags || {}).length === 0 &&
       // Skip for fallback presets `point`, `line`, `area`, `relation`
       !Object.keys(fallbackPresets).includes(presetId)
     ) {
-      presets[presetId] = {
-        ...preset,
-        tags: {
-          categoryId: presetId
-        }
-      }
+      tags = { categoryId: presetId }
+    }
+    if (!((fields || []).includes('notes'))) {
+      // Add a notes field before other fields, if it doesn't already exist
+      fields = ['notes'].concat(fields || [])
+    }
+    presets[presetId] = {
+      ...preset,
+      tags: tags,
+      fields: fields
     }
   })
 

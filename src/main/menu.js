@@ -70,7 +70,7 @@ function menuTemplate (ipc) {
           click: async function (item, focusedWindow) {
             const result = await dialog.showOpenDialog(
               {
-                title: t('menu-import-configuration-dialog'),
+                title: t('menu-import-configuration-title'),
                 filters: [
                   { name: 'Mapeo Settings', extensions: ['mapeosettings'] }
                 ],
@@ -254,6 +254,16 @@ function menuTemplate (ipc) {
       label: t('menu-help'),
       role: 'help',
       submenu: [
+        {
+          label: t('menu-open-user-data'),
+          click: function (item, focusedWindow) {
+            shell.openPath(app.getPath('userData'))
+          },
+          visible: true
+        },
+        {
+          type: 'separator'
+        },
         {
           label: t('menu-check-for-updates'),
           click: function (item, focusedWindow) {

@@ -51,6 +51,7 @@
   "menu-selectall": "Select all",
   "menu-debugging": "Debug",
   "menu-report": "Report issue...",
+  "menu-open-user-data": "Open User Data Folder",
   "menu-check-for-updates": "Check for updates...",
   "menu-get-beta": "Test the latest beta version (unstable)...",
   "menu-downgrade-beta": "Go back to latest stable version...",

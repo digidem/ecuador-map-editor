@@ -92,7 +92,6 @@
   "welcome-screen-3-open-map": "Instellingen voor OpenStreetMap gebruiken",
   "generating-indexes-title": "Indexen",
   "generating-indexes-body": "Indexen opnieuw genereren",
-  "menu-import-data": "Gegevens importeren...",
   "menu-import-data-dialog": "Kies een bestand om te importeren...",
   "menu-import-data-success": "Importeren voltooid!",
   "menu-import-data-error": "Fout bij importeren",

@@ -39,21 +39,9 @@
     "description": "Button tooltip on iD Editor toolbar",
     "message": "Exportar datos del mapa"
   },
-  "renderer.components.MapEditor.ExportButton.exportGeoJson": {
-    "description": "Menu item for exporting GeoJSON",
-    "message": "Exportar GeoJSON…"
-  },
-  "renderer.components.MapEditor.ExportButton.exportShapefile": {
-    "description": "Menu item for exporting Shapefile",
-    "message": "Exportar Shapefile…"
-  },
   "renderer.components.MapEditor.ExportButton.okButton": {
     "description": "OK button after successful export",
     "message": "OK"
-  },
-  "renderer.components.MapEditor.ExportButton.saveTitle": {
-    "description": "Save dialog title",
-    "message": "Exportar datos del mapa"
   },
   "renderer.components.MapEditor.index.feedback-contribute-button": {
     "message": "Comentarios y Contribuciones"
@@ -246,10 +234,6 @@
   "renderer.components.MapFilter.ReportView.HideFieldsButton.showAll": {
     "description": "Show all fields in report view",
     "message": "Mostrar todo"
-  },
-  "renderer.components.MapFilter.ReportView.PDFReport.detailsHeader": {
-    "description": "Button label for hide fields menu",
-    "message": "Detalles"
   },
   "renderer.components.MapFilter.Toolbar.mapTabLabel": {
     "message": "Mapa"

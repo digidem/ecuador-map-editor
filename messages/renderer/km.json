@@ -42,21 +42,9 @@
     "description": "Button tooltip on iD Editor toolbar",
     "message": "ការនាំចេញទិន្នន័យផែនទី"
   },
-  "renderer.components.MapEditor.ExportButton.exportGeoJson": {
-    "description": "Menu item for exporting GeoJSON",
-    "message": "ការនាំចេញជាទម្រង់ GeoJSON..."
-  },
-  "renderer.components.MapEditor.ExportButton.exportShapefile": {
-    "description": "Menu item for exporting Shapefile",
-    "message": "ការនាំចេញជាទម្រង់ Shapefile..."
-  },
   "renderer.components.MapEditor.ExportButton.okButton": {
     "description": "OK button after successful export",
     "message": "យល់ព្រម"
-  },
-  "renderer.components.MapEditor.ExportButton.saveTitle": {
-    "description": "Save dialog title",
-    "message": "នាំចេញទិន្នន័យផែនទី"
   },
   "renderer.components.MapEditor.index.feedback-contribute-button": {
     "message": "មតិយោបល់ និងការចូលរួម"
@@ -257,15 +245,9 @@
     "description": "Show all fields in report view",
     "message": "បង្ហាញ​ទាំងអស់"
   },
-  "renderer.components.MapFilter.ReportView.PDFReport.dateHeader": {
-    "message": "បង្កើតពី"
-  },
-  "renderer.components.MapFilter.ReportView.PDFReport.detailsHeader": {
-    "description": "Button label for hide fields menu",
-    "message": "ព័ត៌មានលម្អិត"
-  },
-  "renderer.components.MapFilter.ReportView.PDFReport.locationHeader": {
-    "message": "ទីតាំង"
+  "renderer.components.MapFilter.ReportView.PDFReport.descriptionLabel": {
+    "description": "Label for description / notes section of report",
+    "message": "សេចក្ដីពិពណ៌នា"
   },
   "renderer.components.MapFilter.ReportView.PDFViewer.noObservations": {
     "description": "Displayed if no observations match current filter, or no observations in Mapeo",

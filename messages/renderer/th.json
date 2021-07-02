@@ -42,21 +42,9 @@
     "description": "Button tooltip on iD Editor toolbar",
     "message": "ส่งออกข้อมูลแผนที่"
   },
-  "renderer.components.MapEditor.ExportButton.exportGeoJson": {
-    "description": "Menu item for exporting GeoJSON",
-    "message": "ส่งออกเป็นไฟล์ GeoJSON"
-  },
-  "renderer.components.MapEditor.ExportButton.exportShapefile": {
-    "description": "Menu item for exporting Shapefile",
-    "message": "ส่งออกเป็น Shapefile"
-  },
   "renderer.components.MapEditor.ExportButton.okButton": {
     "description": "OK button after successful export",
     "message": "ตกลง"
-  },
-  "renderer.components.MapEditor.ExportButton.saveTitle": {
-    "description": "Save dialog title",
-    "message": "ส่งออกข้อมูลแผนที่"
   },
   "renderer.components.MapEditor.index.feedback-contribute-button": {
     "message": "ข้อเสนอแนะและสนับสนุน"
@@ -257,15 +245,9 @@
     "description": "Show all fields in report view",
     "message": "แสดงทั้งหมด"
   },
-  "renderer.components.MapFilter.ReportView.PDFReport.dateHeader": {
-    "message": "สร้างเมื่อ"
-  },
-  "renderer.components.MapFilter.ReportView.PDFReport.detailsHeader": {
-    "description": "Button label for hide fields menu",
+  "renderer.components.MapFilter.ReportView.PDFReport.descriptionLabel": {
+    "description": "Label for description / notes section of report",
     "message": "รายละเอียด"
-  },
-  "renderer.components.MapFilter.ReportView.PDFReport.locationHeader": {
-    "message": "สถานที่"
   },
   "renderer.components.MapFilter.ReportView.PDFViewer.noObservations": {
     "description": "Displayed if no observations match current filter, or no observations in Mapeo",

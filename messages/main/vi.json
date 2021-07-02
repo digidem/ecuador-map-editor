@@ -92,7 +92,6 @@
   "welcome-screen-3-open-map": "Sử dụng cài đặt cho OpenStreetMap (bản đồ mở)",
   "generating-indexes-title": "Chỉ mục",
   "generating-indexes-body": "Đang tạo lại chỉ mục",
-  "menu-import-data": "Nhập dữ liệu...",
   "menu-import-data-dialog": "Chọn một file để nhập...",
   "menu-import-data-success": "Đã nhập xong!",
   "menu-import-data-error": "Lỗi khi nhập",

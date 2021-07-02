@@ -88,7 +88,6 @@
   "welcome-screen-3-open-map": "Start your own map from scratch using OpenStreetMap settings",
   "generating-indexes-title": "Índices",
   "generating-indexes-body": "Regenerar índices…",
-  "menu-import-data": "Importar los datos...",
   "menu-import-data-dialog": "Seleccionar archivo para importar...",
   "menu-import-data-success": "Importación completa!",
   "menu-import-data-error": "Error al importar",

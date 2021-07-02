@@ -92,7 +92,6 @@
   "welcome-screen-3-open-map": "ใช้การตั้งค่าสำหรับ OpenStreetMap",
   "generating-indexes-title": "ดัชนี",
   "generating-indexes-body": "กำลังสร้างดัชนีใหม่",
-  "menu-import-data": "นำเข้าข้อมูล...",
   "menu-import-data-dialog": "เลือกไฟล์เพื่อนำเข้าระบบ...",
   "menu-import-data-success": "การนำเข้าเสร็จสมบูรณ์",
   "menu-import-data-error": "ข้อผิดพลาดระหว่างนำไฟล์เข้า",
